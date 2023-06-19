@@ -20,14 +20,12 @@ public class CardManager : MonoBehaviour
 
     private AudioSource Audio;
 
-
-    private bool playOneTime;
-    private int num;
+    //for playing one time
+    bool PlayP1Sound;
+    bool PlayP2Sound;
 
     private void Start()
     {
-        num = 0;
-        playOneTime = false;
         Audio = GetComponent<AudioSource>();
     }
 
@@ -61,42 +59,41 @@ public class CardManager : MonoBehaviour
 
     public void MoveCardTOFight()
     {
-        num++;
-        Debug.Log(num);
-        
-        if (num ==2 )
-        {
-            playOneTime = true;
-        }
-        if(num == 4)
-        {
-            playOneTime = false;
-            num = 0;
-        }
-        Debug.Log(playOneTime);
+        SetSoundBool();
+
         if (GetCardP1() != null)
         {
- 
+
             Card P1 = GetCardP1();
-            if (!playOneTime)
+            if (PlayP1Sound)
             {
                 Audio.PlayOneShot(P1.GetCardSound());
-                playOneTime = true;
+                PlayP1Sound = false;
             }
-
             P1.transform.position = CardP1fight.position;
         }
         if (GetCardP2() != null)
         {
-  
+
             Card P2 = GetCardP2();
-            if (playOneTime)
+            if (PlayP2Sound)
             {
                 Audio.PlayOneShot(P2.GetCardSound());
-                playOneTime = false;
+                PlayP2Sound = false;
             }
-            
             P2.transform.position = CardP2fight.position;
+        }
+    }
+
+    private void SetSoundBool()
+    {
+        if (ChangeTurn.turn == ChangeTurn.TurnState.P1)
+        {
+            PlayP1Sound = true;
+        }
+        else
+        {
+            PlayP2Sound = true;
         }
     }
 }

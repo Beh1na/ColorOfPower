@@ -6,10 +6,15 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject DrawBtn;
     [SerializeField] private GameObject ChangeBtn;
-    [SerializeField] private GameObject FightBtn;
+    [SerializeField] private GameObject ChooseSide;
+    [SerializeField] private GameObject StopPopup;
+    [SerializeField] private GameObject BookPopup;
+
 
     [SerializeField] private int numberfight;
     [SerializeField] private bool IsSetcards;
+
+
 
     private void Start()
     {
@@ -30,11 +35,21 @@ public class UIManager : MonoBehaviour
 
         if (IsSetcards)
         {
-            FightBtnActive();
-            IsSetcards = false;
+            AllBtnInVisible();
+            StartCoroutine(startFighting());
         }
     }
-    public void FightButtonClick()
+
+
+    IEnumerator startFighting()
+    {
+
+        yield return new WaitForSeconds(2f);
+        ScoreManager._instance.Fight();
+        AfterFight();
+        IsSetcards = false;
+    }
+    public void AfterFight()
     {
         numberfight++;
         if (numberfight == 5)
@@ -48,25 +63,22 @@ public class UIManager : MonoBehaviour
         }
 
     }
-
     private void ChangeBtnActive()
     {
         DrawBtn.SetActive(false);
         ChangeBtn.SetActive(true);
-        FightBtn.SetActive(false);
-    }
-    private void FightBtnActive()
-    {
-        DrawBtn.SetActive(false);
-        ChangeBtn.SetActive(false);
-        FightBtn.SetActive(true);
     }
 
     private void DrawBtnActive()
     {
         DrawBtn.SetActive(true);
         ChangeBtn.SetActive(false);
-        FightBtn.SetActive(false);
     }
+    private void AllBtnInVisible()
+    {
+        DrawBtn.SetActive(false);
+        ChangeBtn.SetActive(false);
+    }
+
 
 }

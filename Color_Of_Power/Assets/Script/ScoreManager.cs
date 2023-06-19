@@ -18,6 +18,8 @@ public class ScoreManager : MonoBehaviour
     private int numberfight;
 
 
+    [SerializeField] private AudioClip RockAudio;
+    [SerializeField] private AudioClip RepairAudio;
     public Card P1;
     public Card P2;
 
@@ -75,6 +77,36 @@ public class ScoreManager : MonoBehaviour
             Finish();
         }
     }
+
+    public void RockItem(bool IsP1)
+    {
+        GetComponent<AudioSource>().PlayOneShot(RockAudio);
+        if (IsP1)
+        {
+            p2score -= 10;
+            P2Score.text = p2score.ToString();
+        }
+        else
+        {
+            p1score -= 10;
+            P1Score.text = p1score.ToString();
+        }
+    }
+    public void RepairItem(bool IsP1)
+    {
+        GetComponent<AudioSource>().PlayOneShot(RepairAudio);
+        if (IsP1)
+        {
+            p2score += 10;
+            P2Score.text = p2score.ToString();
+        }
+        else
+        {
+            p1score += 10;
+            P1Score.text = p1score.ToString();
+        }
+    }
+
 
     public void Finish()
     {
