@@ -44,21 +44,36 @@ public class ScoreManager : MonoBehaviour
     {
         return P2;
     }
-
     public void Fight()
+    {
+        StartCoroutine(Fight_num());
+    }
+    IEnumerator Fight_num()
     {
         numberfight++;
         if (P1.Score > P2.Score)
         {
-            //Animation Lose Card
+
+            P2.PlayWinAnimation();
+            P1.PlayLoseAnimation();
+            yield return new WaitForSeconds(2f);
+
             p1score += P1.Score - P2.Score;
             P1Score.text = p1score.ToString();
 
             P1.destroyitself();
             P2.destroyitself();
+
+
+            //Animation Lose Card
+
         }
         else if (P1.Score < P2.Score)
         {
+
+            P1.PlayWinAnimation();
+            P2.PlayLoseAnimation();
+            yield return new WaitForSeconds(2f);
             //Animation Lose Card
             p2score += P2.Score - P1.Score;
             P2Score.text = p2score.ToString();
@@ -68,11 +83,13 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            //Animation Lose Card for both
+            P2.PlayLoseAnimation();
+            P1.PlayLoseAnimation();
+            yield return new WaitForSeconds(2f);
             P1.destroyitself();
             P2.destroyitself();
         }
-        if(numberfight == FightNumber)
+        if (numberfight == FightNumber)
         {
             Finish();
         }
@@ -83,13 +100,13 @@ public class ScoreManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(RockAudio);
         if (IsP1)
         {
-            p2score -= 10;
-            P2Score.text = p2score.ToString();
+            p1score -= 10;
+            P1Score.text = p1score.ToString();
         }
         else
         {
-            p1score -= 10;
-            P1Score.text = p1score.ToString();
+            p2score -= 10;
+            P2Score.text = p2score.ToString();
         }
     }
     public void RepairItem(bool IsP1)
@@ -99,9 +116,11 @@ public class ScoreManager : MonoBehaviour
         {
             p2score += 10;
             P2Score.text = p2score.ToString();
+
         }
         else
         {
+
             p1score += 10;
             P1Score.text = p1score.ToString();
         }

@@ -14,6 +14,8 @@ public class Item : MonoBehaviour
     {
         if (useRockItem) ScoreManager._instance.RockItem(IsP1);
         else ScoreManager._instance.RepairItem(IsP1);
+
+        Destroy(gameObject);
     }
 
 

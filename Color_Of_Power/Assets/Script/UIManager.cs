@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject ChooseSide;
     [SerializeField] private GameObject StopPopup;
     [SerializeField] private GameObject BookPopup;
-
+    [SerializeField] private GameObject RoundText;
 
     [SerializeField] private int numberfight;
     [SerializeField] private bool IsSetcards;
@@ -20,15 +20,17 @@ public class UIManager : MonoBehaviour
     {
         numberfight = 0;
         DrawBtnActive();
+        RoundText.SetActive(true);
     }
 
     public void DrawButtonClick()
     {
+        RoundText.SetActive(false);
         ChangeBtnActive();
     }
     public void ChangeButtonClick()
     {
-        if(ScoreManager._instance.GetCardP1() != null && ScoreManager._instance.GetCardP2() != null)
+        if (ScoreManager._instance.GetCardP1() != null && ScoreManager._instance.GetCardP2() != null)
         {
             IsSetcards = true;
         }
@@ -43,9 +45,9 @@ public class UIManager : MonoBehaviour
 
     IEnumerator startFighting()
     {
-
-        yield return new WaitForSeconds(2f);
         ScoreManager._instance.Fight();
+        yield return new WaitForSeconds(2f);
+
         AfterFight();
         IsSetcards = false;
     }
@@ -54,8 +56,16 @@ public class UIManager : MonoBehaviour
         numberfight++;
         if (numberfight == 5)
         {
+            RoundText.SetActive(true);
+            float time = 2f;
+            while (true)
+            {
+                time -= Time.deltaTime;
+                if (time <= 0) break;
+            }
             DrawBtnActive();
             numberfight = 0;
+            
         }
         else
         {

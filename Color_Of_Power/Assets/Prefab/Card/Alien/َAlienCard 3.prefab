@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6697138885324140505}
   - component: {fileID: 1772813560894199201}
   - component: {fileID: 2494823339596876470}
-  - component: {fileID: 5488334065472180854}
+  - component: {fileID: -6372391386445244458}
+  - component: {fileID: 710865710456461532}
   m_Layer: 0
   m_Name: "\u064EAlienCard 3"
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4115687946489218702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b866a3a573d975a44bd8d4bd2a2cd4ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3184c601122e984f8d4803137bbf945, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27975d33feca7864d9bf3d3a4e1f4b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: 5
+  Score: 1
   SoundFXCard: {fileID: 8300000, guid: 8d7b79a544210814cb3825c2d800a07e, type: 3}
-  IsP1: 0
---- !u!61 &5488334065472180854
+  IsP1: 1
+--- !u!61 &-6372391386445244458
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,16 +115,36 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.35620022}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.06, y: 15}
+    oldSize: {x: 12.8, y: 19.2}
     newSize: {x: 10.06, y: 15}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.06, y: 15}
+  m_Size: {x: 12.434675, y: 18.56201}
   m_EdgeRadius: 0
+--- !u!95 &710865710456461532
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115687946489218702}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27b60fe5c0754d34691f51d84a304faa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

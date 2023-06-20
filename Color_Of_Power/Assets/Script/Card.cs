@@ -7,6 +7,23 @@ public class Card : MonoBehaviour
     [SerializeField] public int Score;
     [SerializeField] public AudioClip SoundFXCard;
     [SerializeField] public bool IsP1;
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+
+
+    public void PlayWinAnimation()
+    {
+        anim.SetTrigger("Win");
+    }
+    public void PlayLoseAnimation()
+    {
+        anim.SetTrigger("Lose");
+    }
 
     private void OnMouseDown()
     {

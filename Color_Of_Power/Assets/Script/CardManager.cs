@@ -10,7 +10,7 @@ public class CardManager : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI RoundText;
-    private int round = 0;
+    private int round = 1;
 
     [SerializeField] public Transform[] SlotCardP1;
     [SerializeField] public Transform[] SlotCardP2;
@@ -44,12 +44,12 @@ public class CardManager : MonoBehaviour
     {
         for (int i = 0; i < SlotCardP2.Length; i++)
         {
-            Card randomcardP1 = AlienDeck[Random.Range(0, 20)];
+            Card randomcardP1 = AlienDeck[Random.Range(0, 10)];
             randomcardP1.IsP1 = true;
             Instantiate(randomcardP1, SlotCardP1[i]);
 
 
-            Card randomcardP2 = TerrestrialDeck[Random.Range(0, 20)];
+            Card randomcardP2 = TerrestrialDeck[Random.Range(0, 10)];
             randomcardP2.IsP1 = false;
             Instantiate(randomcardP2, SlotCardP2[i]);
         }

@@ -19,4 +19,5 @@ public class ItemManager : MonoBehaviour
         P2Item.IsP1 = false;
         Instantiate(P2Item, SlotItemP2);
     }
+
 }

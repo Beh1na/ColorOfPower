@@ -1,29 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] private GameObject ChooseSide;
     [SerializeField] private GameObject StopPopup;
-    [SerializeField] private GameObject BookPopup;
 
-    public void ClickAlienBtn()
-    {
-        ChooseSide.SetActive(false);
-    }
-    public void ClickTerrestrialBtn()
-    {
-        ChooseSide.SetActive(false);
-    }
 
     public void ClickStopBtn()
     {
         StopPopup.SetActive(true);
     }
-    public void ClickBookBtn()
+
+    public void ClickPlayAgain()
     {
-        BookPopup.SetActive(true);
+        SceneManager.LoadScene(1);
+    }
+    public void ClickHome()
+    {
+        SceneManager.LoadScene(0);
     }
 
 
