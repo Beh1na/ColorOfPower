@@ -40,21 +40,37 @@ public class CardManager : MonoBehaviour
         return ScoreManager._instance.GetCardP2();
     }
 
-    public void draw()
+    public void Draw()
     {
+        StartCoroutine(draw());
+    }
+        
+
+
+    IEnumerator draw()
+    {
+        if(ChangeTurn.turn == ChangeTurn.TurnState.P1)
+        {
+            ChangeTurn.turn = ChangeTurn.TurnState.P2;
+        }
+        else
+        {
+            ChangeTurn.turn = ChangeTurn.TurnState.P1;
+        }
         for (int i = 0; i < SlotCardP2.Length; i++)
         {
-            Card randomcardP1 = AlienDeck[Random.Range(0, 10)];
+            Card randomcardP1 = AlienDeck[Random.Range(0, AlienDeck.Capacity)];
             randomcardP1.IsP1 = true;
             Instantiate(randomcardP1, SlotCardP1[i]);
 
-
-            Card randomcardP2 = TerrestrialDeck[Random.Range(0, 10)];
+            yield return new WaitForSeconds(0.4f);
+            Card randomcardP2 = TerrestrialDeck[Random.Range(0, TerrestrialDeck.Capacity)];
             randomcardP2.IsP1 = false;
             Instantiate(randomcardP2, SlotCardP2[i]);
         }
         round++;
         RoundText.text = round.ToString();
+
     }
 
     public void MoveCardTOFight()

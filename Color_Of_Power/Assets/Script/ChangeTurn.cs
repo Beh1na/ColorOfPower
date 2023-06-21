@@ -8,6 +8,9 @@ public class ChangeTurn : MonoBehaviour
 
     static public TurnState turn;
 
+    [SerializeField] private GameObject AlienObject;
+    [SerializeField] private GameObject EarthObject;
+
     public Card GetCardP1()
     {
         return ScoreManager._instance.GetCardP1();
@@ -30,6 +33,39 @@ public class ChangeTurn : MonoBehaviour
             turn = TurnState.P2;
         if (GetCardP1() == null && GetCardP2() != null) 
             turn = TurnState.P1;
+
+        Debug.Log(turn);
+    }
+
+    public void SetObject()
+    {
+        if(turn == TurnState.P1)
+        {
+            AlienObject.SetActive(true);
+            EarthObject.SetActive(false);
+
+        }
+        else
+        {
+            AlienObject.SetActive(false);
+            EarthObject.SetActive(true);
+
+        }
+    }
+    public void SetObjectIntro()
+    {
+        if (turn == TurnState.P1)
+        {
+            AlienObject.SetActive(true);
+            EarthObject.SetActive(false);
+
+        }
+        else
+        {
+            AlienObject.SetActive(false);
+            EarthObject.SetActive(true);
+
+        }
     }
 
 }

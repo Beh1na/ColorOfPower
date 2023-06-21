@@ -6,9 +6,6 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject DrawBtn;
     [SerializeField] private GameObject ChangeBtn;
-    [SerializeField] private GameObject ChooseSide;
-    [SerializeField] private GameObject StopPopup;
-    [SerializeField] private GameObject BookPopup;
     [SerializeField] private GameObject RoundText;
 
     [SerializeField] private int numberfight;
@@ -46,7 +43,7 @@ public class UIManager : MonoBehaviour
     IEnumerator startFighting()
     {
         ScoreManager._instance.Fight();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
 
         AfterFight();
         IsSetcards = false;
@@ -54,7 +51,7 @@ public class UIManager : MonoBehaviour
     public void AfterFight()
     {
         numberfight++;
-        if (numberfight == 5)
+        if (numberfight == 4)
         {
             RoundText.SetActive(true);
             float time = 2f;

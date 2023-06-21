@@ -8,7 +8,7 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] public Transform SlotItemP1;
     [SerializeField] public Transform SlotItemP2;
-
+    
     public void DrawItem()
     {
         Item P1Item = ItemList[Random.Range(0,2)];

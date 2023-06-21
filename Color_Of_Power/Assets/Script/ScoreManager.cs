@@ -11,8 +11,14 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int p2score;
     [SerializeField] private TextMeshProUGUI P1Score;
     [SerializeField] private TextMeshProUGUI P2Score;
+    [SerializeField] private TextMeshProUGUI P1Scoreend;
+    [SerializeField] private TextMeshProUGUI P2Scoreend;
+    [SerializeField] private TextMeshProUGUI scorefinish;
+    [SerializeField] private TextMeshProUGUI P1NameText;
+    [SerializeField] private TextMeshProUGUI P2NameText;
 
-    [SerializeField] private int FightNumber;
+
+    [SerializeField] private int Round;
     [SerializeField] private GameObject FinishGame;
     [SerializeField] private TextMeshProUGUI FinishText;
     private int numberfight;
@@ -89,7 +95,7 @@ public class ScoreManager : MonoBehaviour
             P1.destroyitself();
             P2.destroyitself();
         }
-        if (numberfight == FightNumber)
+        if (numberfight == Round * 4)
         {
             Finish();
         }
@@ -127,10 +133,22 @@ public class ScoreManager : MonoBehaviour
     }
 
 
+    public int getPointP1()
+    {
+        return p1score;
+    }
+    public int getPointP2()
+    {
+        return p2score;
+    }
     public void Finish()
     {
+        if (p1score > p2score) FinishText.text = P2NameText.text;
+        else FinishText.text = P1NameText.text;
+
         FinishGame.SetActive(true);
-        if (p1score > p2score) FinishText.text = "Player1 win!";
-        if (p1score < p2score) FinishText.text = "Player2 win!";
+
+        P1Scoreend.text = p1score.ToString();
+        P2Scoreend.text = p2score.ToString();
     }
 }

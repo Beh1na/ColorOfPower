@@ -21,7 +21,7 @@ public class BookPopup : MonoBehaviour
     {
         currentlyNumber++;
         PreviusBtn.SetActive(true);
-        if (currentlyNumber == 3) NextBtn.SetActive(false);
+        if (currentlyNumber == 22) NextBtn.SetActive(false);
         else NextBtn.SetActive(true);
         CardDescription[currentlyNumber - 1].SetActive(false);
         CardDescription[currentlyNumber].SetActive(true);
