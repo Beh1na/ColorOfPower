@@ -1528,7 +1528,7 @@ MonoBehaviour:
     Different types of people unite to stop the aliens.
   ButtonContinue: {fileID: 1365275340}
   StartGame: {fileID: 258165070}
-  Type: {fileID: 8300000, guid: 8c8a9d33c74fd30468f51810ccafd25e, type: 3}
+  Type: {fileID: 8300000, guid: 6606a40e389622c489877a3c7c7233ef, type: 3}
 --- !u!4 &1799210497
 Transform:
   m_ObjectHideFlags: 0
@@ -1554,11 +1554,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6606a40e389622c489877a3c7c7233ef, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

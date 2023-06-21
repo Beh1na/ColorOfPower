@@ -6,6 +6,8 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager _instance;
+    [SerializeField] private GameObject panel;
+
 
     [SerializeField] private int p1score;
     [SerializeField] private int p2score;
@@ -56,6 +58,7 @@ public class ScoreManager : MonoBehaviour
     }
     IEnumerator Fight_num()
     {
+        panel.SetActive(true);
         numberfight++;
         if (P1.Score > P2.Score)
         {
@@ -95,6 +98,7 @@ public class ScoreManager : MonoBehaviour
             P1.destroyitself();
             P2.destroyitself();
         }
+        panel.SetActive(false);
         if (numberfight == Round * 4)
         {
             Finish();

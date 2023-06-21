@@ -14,6 +14,7 @@ public class Storyy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StoryText.text = "";
         StartCoroutine(TypeSentence(StoryPt1));
         GetComponent<AudioSource>().PlayOneShot(Type);
     }
@@ -26,15 +27,14 @@ public class Storyy : MonoBehaviour
             StoryText.text += Letter;
             yield return new WaitForSeconds(0.05f);
         }
-        GetComponent<AudioSource>().Pause();
+        GetComponent<AudioSource>().volume = 0;
     }
 
     public void ClickNextPart()
     {
         StoryText.text = "";
-        GetComponent<AudioSource>().PlayOneShot(Type);
         StartCoroutine(TypeSentence(StoryPt2));
-        
+        GetComponent<AudioSource>().volume = 1; 
         ButtonContinue.SetActive(false);
         StartGame.SetActive(true);
     }
