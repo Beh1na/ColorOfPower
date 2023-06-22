@@ -10,33 +10,32 @@ public class Storyy : MonoBehaviour
     [SerializeField] private string StoryPt2;
     [SerializeField] private GameObject ButtonContinue;
     [SerializeField] private GameObject StartGame;
-    [SerializeField] private AudioClip Type;
     // Start is called before the first frame update
     void Start()
     {
         StoryText.text = "";
-        StartCoroutine(TypeSentence(StoryPt1));
-        GetComponent<AudioSource>().PlayOneShot(Type);
+        StartCoroutine(TypeSentence(StoryPt1, ButtonContinue));
     }
 
-    IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence (string sentence , GameObject Button)
     {
         StoryText.text = "";
         foreach(char Letter in sentence.ToCharArray())
         {
             StoryText.text += Letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return null;
         }
         GetComponent<AudioSource>().volume = 0;
+        Button.SetActive(true);
     }
 
     public void ClickNextPart()
     {
-        StoryText.text = "";
-        StartCoroutine(TypeSentence(StoryPt2));
-        GetComponent<AudioSource>().volume = 1; 
         ButtonContinue.SetActive(false);
-        StartGame.SetActive(true);
+        GetComponent<AudioSource>().volume = 1;
+        StoryText.text = "";
+        StartCoroutine(TypeSentence(StoryPt2, StartGame));
+
     }
     public void ClickRunGame()
     {

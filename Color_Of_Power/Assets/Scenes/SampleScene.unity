@@ -10534,7 +10534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65c82ec305191f4eb8fdadd4f47feae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 1109613460}
   p1score: 0
   p2score: 0
   P1Score: {fileID: 345320868}
